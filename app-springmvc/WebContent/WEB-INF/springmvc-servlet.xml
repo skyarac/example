@@ -7,22 +7,6 @@
     http://www.springframework.org/schema/context 
     http://www.springframework.org/schema/context/spring-context-3.0.xsd ">
 
-
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-		<property name="suffix" value=".html"/>
-			
-	</bean>
-	<bean name="userAction" class="com.wetuo.example.three.web.UserController" />
-	<bean id="urlMapping"
-		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="mappings">
-			<props>
-				<prop key="/index">userAction </prop>  <!-- 映射URL访问 -->
-			</props>
-		</property>
-	</bean>
-	
 	<!-- Freemarker配置 -->
 	<bean id="freemarkerConfig"
 		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
@@ -37,8 +21,31 @@
 				<prop key="template_exception_handler">ignore</prop>
 			</props>
 		</property>
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="app_content" value-ref="app_content"/>
+			</map>
+		</property>
 	</bean>
 
-	
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="suffix" value=".html" />
+
+	</bean>
+	<bean name="userAction" class="com.wetuo.example.three.web.action.UserController" />
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/index">userAction </prop>  <!-- 映射URL访问 -->
+			</props>
+		</property>
+	</bean>
+	<!-- 自定义标签 -->
+	<bean id="app_content" class="com.wetuo.example.three.web.directive.ContentDirective"/>
+
+
+
 
 </beans>

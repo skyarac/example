@@ -1,4 +1,4 @@
-package com.wetuo.example.three.web;
+package com.wetuo.example.three.web.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

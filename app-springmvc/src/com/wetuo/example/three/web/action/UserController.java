@@ -13,7 +13,7 @@ public class UserController implements Controller {
 			HttpServletResponse arg1) throws Exception {
 
 		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("username", " arac ");
+		mv.addObject("title", " title ");
 		return mv;
 	}
 

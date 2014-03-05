@@ -3,6 +3,28 @@
 		<title>${title}</title>
 	</head>
 	<body>
-		<@app_content />
+		<@app_content count=4>
+			<#list tag_list as u>
+			<span style="color:red">${u_index}</span>|${u.age}|${u.name}|${u.address}</br>
+			</#list>
+		</@app_content>
+		
+		</br>------------------------------</br>
+		<#macro do_thrice>
+			<#nested 1>
+			<#nested 2>
+			<#nested 3>
+		</#macro>
+		<@do_thrice ; x>
+			${x} Anything.
+		</@do_thrice>
+		</br>------------------------------</br>
+		<#macro repeat>
+			<#nested 1>
+			<#nested 2>
+		</#macro>
+		<@repeat;i>
+			${i} sth.</br>
+		</@repeat>
 	</body>
 </html>
